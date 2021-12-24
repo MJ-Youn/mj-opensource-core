@@ -53,7 +53,7 @@ public class Result<T> {
      * @param msg
      *            실패 메시지
      * @param args
-     *            실패 메시지에 포함될 argument 목록. <br/>
+     *            실패 메시지에 포함될 argument 목록. <br>
      *            메시지 상에서 {0}, {1}, ... 위치에 맵핑 됨
      * @return 실패 상태
      */
