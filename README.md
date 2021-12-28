@@ -11,3 +11,6 @@
 
 ### 0.1.1 - 20211227
  + pom.xml 수정 (description)
+
+### 0.1.1-SNAPSHOT - 20211228
+ + Result 고도화
