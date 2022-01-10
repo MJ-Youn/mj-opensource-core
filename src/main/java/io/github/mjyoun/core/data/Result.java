@@ -1,7 +1,11 @@
 package io.github.mjyoun.core.data;
 
 import java.text.MessageFormat;
+import java.util.List;
+import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import javax.validation.constraints.NotNull;
 
@@ -41,6 +45,34 @@ public class Result<T> {
     public static <T> Result<T> ok(T data) {
         return Result.<T>builder() //
                 .data(data) //
+                .message(null) //
+                .result(true) //
+                .build();
+    }
+
+    /**
+     * iterable을 받아 list로 변환하여 생성하는 함수
+     * 
+     * @param <S>
+     *            iterable(source) 객체
+     * @param <D>
+     *            list(destination) 객체
+     * @param sup
+     *            iterable 을 제공하는 메소드. 일반적으로 repository.findAll()
+     * @param convertFunc
+     *            sourced에서 destination으로 객체 변환하는 함수
+     * @return destination list로 값을 갖는 {@link Result} 객체
+     */
+    public static <S, D> Result<List<D>> convertIterableToList(Supplier<Iterable<S>> sup, Function<S, D> convertFunc) {
+        // 조회
+        Iterable<S> dataIterable = sup.get();
+        // 변환
+        List<D> convertedDatas = StreamSupport.stream(dataIterable.spliterator(), false) //
+                .map(convertFunc) //
+                .collect(Collectors.toList());
+
+        return Result.<List<D>>builder() //
+                .data(convertedDatas) //
                 .message(null) //
                 .result(true) //
                 .build();
