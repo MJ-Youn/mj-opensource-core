@@ -14,3 +14,4 @@
 
 ### 0.1.1-SNAPSHOT - 20211228
  + Result 고도화
+   - iterable을 List로 변경하는 함수 추가
