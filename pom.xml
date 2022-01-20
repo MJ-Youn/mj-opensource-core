@@ -10,7 +10,7 @@
 	<groupId>io.github.mj-youn</groupId>
 
 	<artifactId>core</artifactId>
-	<version>0.1.2</version> <!-- '-SNAPSHOT'으로 끝나면 snapshot, 아닐 경우 release로 배포됨 -->
+	<version>0.1.3</version> <!-- '-SNAPSHOT'으로 끝나면 snapshot, 아닐 경우 release로 배포됨 -->
 
 	<name>io.github.mj-youn.core</name>
 	<description>A project that organizes frequently used utilities in Java</description>

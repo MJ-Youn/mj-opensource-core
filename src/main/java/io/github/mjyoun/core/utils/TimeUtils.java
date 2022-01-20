@@ -1,7 +1,4 @@
-/**
- *
- */
-package io.github.mjyoun.core.time;
+package io.github.mjyoun.core.utils;
 
 import java.text.MessageFormat;
 import java.util.concurrent.TimeUnit;
