@@ -21,3 +21,6 @@
 
 ### 0.1.3 - 20220120
 + Collection 관리를 위한 CollectionUtils 추가 
+
+### 0.1.4, 0.1.5 - 20220221
++ Collection 관련 함수 추가 

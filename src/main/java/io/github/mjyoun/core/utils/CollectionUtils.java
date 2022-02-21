@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
 /**
@@ -75,6 +76,38 @@ public class CollectionUtils {
         }
 
         return true;
+    }
+
+    /**
+     * 중복데이터를 확인하여 중복되지 않는 데이터만 리스트에 추가하는 함수
+     * 
+     * @param <T>
+     *            데이터 모델
+     * @param list
+     *            기준이 되는 목록
+     * @param listToAdd
+     *            추가할 데이터 목록
+     * @param existCheck
+     *            기준이 되는 목록에 데이터가 존재하는지 확인하는 함수
+     * @return 기준이 되는 목록에 중복되지 않은 추가할 데이터를 추가한 목록
+     * 
+     * @author MJ Youn
+     * @since 2022. 02. 21.
+     */
+    public static <T> List<T> addAllNotExist(List<T> list, List<T> listToAdd, BiFunction<List<T>, T, Boolean> existCheck) {
+        if (list == null || listToAdd == null) {
+            throw new IllegalArgumentException("필수값이 없습니다.");
+        }
+
+        for (T item : listToAdd) {
+            Boolean isExist = existCheck.apply(list, item);
+
+            if (!isExist) {
+                list.add(item);
+            }
+        }
+
+        return list;
     }
 
 }
