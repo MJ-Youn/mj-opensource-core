@@ -27,3 +27,9 @@
 
 ### 0.2.0 - 20240207
 + excel 생성 관련 기능 추가
+
+### 0.2.1 - 20250218
+ - 배포 library 변경 
+  + nexus-staging-maven-plugin -> central-publishing-maven-plugin
+  + repository 위치 변경 (ossrh -> central)
+  + license, developer info 추가
