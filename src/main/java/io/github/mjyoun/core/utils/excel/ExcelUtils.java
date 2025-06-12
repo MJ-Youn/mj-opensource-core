@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -163,7 +164,24 @@ public class ExcelUtils {
                     _field.setAccessible(true);
 
                     try {
-                        datas[contentIndex][dataIndex++] = _field.get(content);
+                        Object _data = _field.get(content);
+                        String data = null;
+
+                        if (_data == null) {
+                            data = "-";
+                        } else if (_data instanceof LocalDate) {
+                            data = ((LocalDate) _data).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                        } else if (_data instanceof LocalDateTime) {
+                            data = ((LocalDateTime) _data).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                        } else if (_data instanceof LocalTime) {
+                            data = ((LocalTime) _data).format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+                        } else if (_data instanceof ZonedDateTime) {
+                            data = ((ZonedDateTime) _data).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z"));
+                        } else {
+                            data = _data.toString();
+                        }
+
+                        datas[contentIndex][dataIndex++] = data;
                     } catch (IllegalArgumentException | IllegalAccessException ignore) {
                     } finally {
                         _field.setAccessible(accessible);

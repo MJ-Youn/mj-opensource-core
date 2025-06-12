@@ -33,3 +33,6 @@
   + nexus-staging-maven-plugin -> central-publishing-maven-plugin
   + repository 위치 변경 (ossrh -> central)
   + license, developer info 추가
+
+### 0.2.2 - 20250612
+ - Excel column의 날짜 관련 데이터의 출력 포맷 변경
