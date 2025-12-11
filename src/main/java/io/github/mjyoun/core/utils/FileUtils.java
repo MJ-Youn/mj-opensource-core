@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -65,7 +66,17 @@ public class FileUtils {
         }
         detector.dataEnd();
 
-        Charset encoding = Charset.forName(detector.getDetectedCharset());
+        Charset encoding = null;
+        String detectedCharset = detector.getDetectedCharset();
+
+        if (detectedCharset != null) {
+            // 감지에 성공한 경우
+            encoding = Charset.forName(detectedCharset);
+        } else {
+            // 감지에 실패한 경우, 기본 인코딩(UTF-8)을 사용
+            encoding = StandardCharsets.UTF_8;
+        }
+        
         detector.reset(); // 다음 감지를 위해 리셋
 
         return encoding;
