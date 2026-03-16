@@ -7,12 +7,8 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * 결과 타입을 반환할 때 사용하는 객체
@@ -20,10 +16,6 @@ import lombok.NoArgsConstructor;
  * @author MJ Youn
  * @since 2021. 12. 23.
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class Result<T> {
 
     /** 성공시 출력하는 결과 데이터 */
@@ -32,6 +24,48 @@ public class Result<T> {
     private String message;
     /** 실패/성공 여부 */
     private boolean result;
+
+    public Result() {
+    }
+
+    public Result(T data, String message, boolean result) {
+        this.data = data;
+        this.message = message;
+        this.result = result;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public boolean isResult() {
+        return result;
+    }
+
+    public void setResult(boolean result) {
+        this.result = result;
+    }
+
+    @Override
+    public String toString() {
+        return "Result{" +
+                "data=" + data +
+                ", message='" + message + '\'' +
+                ", result=" + result +
+                '}';
+    }
 
     /**
      * 성공 상태를 생성하는 메소드
@@ -43,11 +77,7 @@ public class Result<T> {
      * @return 성공 상태
      */
     public static <T> Result<T> ok(T data) {
-        return Result.<T>builder() //
-                .data(data) //
-                .message(null) //
-                .result(true) //
-                .build();
+        return new Result<>(data, null, true);
     }
 
     /**
@@ -71,11 +101,7 @@ public class Result<T> {
                 .map(convertFunc) //
                 .collect(Collectors.toList());
 
-        return Result.<List<D>>builder() //
-                .data(convertedDatas) //
-                .message(null) //
-                .result(true) //
-                .build();
+        return new Result<>(convertedDatas, null, true);
     }
 
     /**
@@ -92,11 +118,7 @@ public class Result<T> {
      */
     public static <T> Result<T> error(@NotNull String msg, Object... args) {
         String message = MessageFormat.format(msg, args);
-        return Result.<T>builder() //
-                .data(null) //
-                .message(message) //
-                .result(false) //
-                .build();
+        return new Result<>(null, message, false);
     }
 
     /**
@@ -109,11 +131,7 @@ public class Result<T> {
      * @return 실패 상태
      */
     public static <T> Result<T> error(@NotNull Result<?> result) {
-        return Result.<T>builder() //
-                .data(null) //
-                .message(result.getMessage()) //
-                .result(false) //
-                .build();
+        return new Result<>(null, result.getMessage(), false);
     }
 
     /**

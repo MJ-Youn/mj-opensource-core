@@ -3,10 +3,8 @@ package io.github.mjyoun.core.utils;
 import java.text.MessageFormat;
 import java.util.concurrent.TimeUnit;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 
 /**
  * 시간 관련된 유틸
@@ -25,8 +23,6 @@ public class TimeUtils {
      * @author MJ Youn
      * @since 2021. 12. 24.
      */
-    @Getter
-    @AllArgsConstructor
     public enum TIME_FORMAT {
 
         nano("nnn", TimeUnit.NANOSECONDS), //
@@ -42,6 +38,18 @@ public class TimeUtils {
         /** 단위 */
         private TimeUnit unit;
 
+        TIME_FORMAT(String format, TimeUnit unit) {
+            this.format = format;
+            this.unit = unit;
+        }
+
+        public String getFormat() {
+            return format;
+        }
+
+        public TimeUnit getUnit() {
+            return unit;
+        }
     }
 
     /**
