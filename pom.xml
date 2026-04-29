@@ -1,203 +1,212 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.0.6</version>
-		<relativePath/>
-	</parent>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>4.0.6</version>
+        <relativePath />
+    </parent>
 
-	<!-- Developer info -->
-	<developers>
-		<developer>
-			<id>yun0244</id>
-			<name>MJ Youn</name>
-			<email>yun0244@naver.com</email>
-			<roles>
-				<role>developer</role>
-			</roles>
-			<organization>MJ Youn</organization>
-			<organizationUrl>http://mj-youn.github.io</organizationUrl>
-		</developer>
-	</developers>
+    <!-- Developer info -->
+    <developers>
+        <developer>
+            <id>yun0244</id>
+            <name>MJ Youn</name>
+            <email>yun0244@naver.com</email>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <organization>MJ Youn</organization>
+            <organizationUrl>http://mj-youn.github.io</organizationUrl>
+        </developer>
+    </developers>
 
-	<!-- License -->
-	<licenses>
-		<license>
-			<name>MIT License</name>
-			<url>https://opensource.org/licenses/MIT</url>
-		</license>
-	</licenses>
+    <!-- License -->
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
 
-	<groupId>io.github.mj-youn</groupId>
+    <groupId>io.github.mj-youn</groupId>
 
-	<artifactId>core</artifactId>
-	<version>25.4.7-20260428.0</version> <!-- '-SNAPSHOT'으로 끝나면 snapshot, 아닐 경우 release로 배포됨 -->
+    <artifactId>core</artifactId>
+    <version>25.4.7-20260429.0</version> <!-- '-SNAPSHOT'으로 끝나면 snapshot, 아닐 경우 release로 배포됨 -->
 
-	<name>io.github.mj-youn.core</name>
-	<description>A project that organizes frequently used utilities in Java</description>
+    <name>io.github.mj-youn.core</name>
+    <description>A project that organizes frequently used utilities in Java</description>
+    <url>https://github.com/mj-youn/mj-opensource-core</url>
 
-	<properties>
-		<maven.compiler.source>25</maven.compiler.source>
-		<maven.compiler.target>25</maven.compiler.target>
-	</properties>
+    <scm>
+        <url>https://github.com/mj-youn/mj-opensource-core</url>
+        <connection>scm:git:git://github.com/mj-youn/mj-opensource-core.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/mj-youn/mj-opensource-core.git</developerConnection>
+    </scm>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-		</dependency>
+    <properties>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
+    </properties>
 
-		<dependency>
-			<groupId>jakarta.validation</groupId>
-			<artifactId>jakarta.validation-api</artifactId>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
 
-		<!-- BEGIN: POI -->
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.14.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>5.2.5</version>
-		</dependency>
-		<!-- E N D: POI -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-		<!-- BEGIN: File Encoding 확인 -->
-		<dependency>
-			<groupId>com.googlecode.juniversalchardet</groupId>
-			<artifactId>juniversalchardet</artifactId>
-			<version>1.0.3</version>
-		</dependency>
-		<!-- E N D: File Encoding 확인 -->
-	</dependencies>
+        <!-- BEGIN: POI -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.14.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.2.5</version>
+        </dependency>
+        <!-- E N D: POI -->
 
-	<!-- publishing 설정 -->
-	<distributionManagement>
-		<!-- release publishing -->
-		<repository>
-			<id>central</id>
-			<name>Central Repository</name>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-		<!-- snapshot publishing -->
-		<snapshotRepository>
-			<id>central</id>
-			<name>Central Repository Snapshots</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
+        <!-- BEGIN: File Encoding 확인 -->
+        <dependency>
+            <groupId>com.googlecode.juniversalchardet</groupId>
+            <artifactId>juniversalchardet</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <!-- E N D: File Encoding 확인 -->
+    </dependencies>
 
-	<build>
-		<!-- BEGIN: "maven-enforcer-plugin (goal "enforce") is ignored by m2e." warning을 무시하기 위한 구문 -->
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-enforcer-plugin</artifactId>
-										<versionRange>[1.0.0,)</versionRange>
-										<goals>
-											<goal>enforce</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-		<!-- E N D: "maven-enforcer-plugin (goal "enforce") is ignored by m2e." warning을 무시하기 위한 구문 -->
-		<plugins>
-			<!-- BEGIN: publishing -->
-			<plugin>
-				<groupId>org.sonatype.central</groupId>
-				<artifactId>central-publishing-maven-plugin</artifactId>
-				<version>0.7.0</version>
-				<extensions>true</extensions>
-				<configuration>
-					<publishingServerId>central</publishingServerId>
-				</configuration>
-			</plugin>
-			<!-- E N D: publishing -->
-			<!-- BEGIN: java doc -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>3.2.1</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.3.0</version>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<!-- E N D: java doc -->
-			<!-- BEGIN: GPG 서명 설정 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<version>3.2.7</version>
-				<configuration>
-					<gpgArguments>
-						<arg>--pinentry-mode</arg>
-						<arg>loopback</arg>
-					</gpgArguments>
-				</configuration>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<!-- E N D: GPG 서명 설정 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+    <!-- publishing 설정 -->
+    <distributionManagement>
+        <!-- release publishing -->
+        <repository>
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <!-- snapshot publishing -->
+        <snapshotRepository>
+            <id>central</id>
+            <name>Central Repository Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <build>
+        <!-- BEGIN: "maven-enforcer-plugin (goal "enforce") is ignored by m2e." warning을 무시하기 위한 구문 -->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-enforcer-plugin</artifactId>
+                                        <versionRange>[1.0.0,)</versionRange>
+                                        <goals>
+                                            <goal>enforce</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <!-- E N D: "maven-enforcer-plugin (goal "enforce") is ignored by m2e." warning을 무시하기 위한 구문 -->
+        <plugins>
+            <!-- BEGIN: publishing -->
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.7.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>          <!-- 검증 완료 시 사용자가 버튼 안 눌러도 자동 Publish -->
+                    <waitUntil>published</waitUntil>         <!-- 완전히 Publish 끝날 때까지 터미널 안 끄고 대기 -->
+                </configuration>
+            </plugin>
+            <!-- E N D: publishing -->
+            <!-- BEGIN: java doc -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- E N D: java doc -->
+            <!-- BEGIN: GPG 서명 설정 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.2.7</version>
+                <configuration>
+                    <gpgArguments>
+                        <arg>--pinentry-mode</arg>
+                        <arg>loopback</arg>
+                    </gpgArguments>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- E N D: GPG 서명 설정 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

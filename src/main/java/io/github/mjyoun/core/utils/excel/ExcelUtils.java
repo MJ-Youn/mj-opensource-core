@@ -49,11 +49,11 @@ public class ExcelUtils {
      *            저장할 위치
      * @throws FileNotFoundException
      * @throws IOException
-     * 
      * @author MJ Youn
      * @since 2024. 02. 07.
      */
-    public static <T> void create(@NotNull List<T> contents, @NotNull Class<T> clazz, @NotNull Path path) throws FileNotFoundException, IOException {
+    public static <T> void create(@NotNull List<T> contents, @NotNull Class<T> clazz, @NotNull Path path)
+            throws FileNotFoundException, IOException {
         SXSSFWorkbook workbook = create(contents, clazz);
 
         workbook.write(new FileOutputStream(path.normalize().toString()));
@@ -72,12 +72,11 @@ public class ExcelUtils {
      *            저장할 위치
      * @throws FileNotFoundException
      * @throws IOException
-     * 
      * @author MJ Youn
      * @since 2024. 02. 07.
      */
-    public static void create(@NotNull String[] headers, @NotNull Object[][] datas, @NotNull String sheetName, @NotNull Path path)
-            throws FileNotFoundException, IOException {
+    public static void create(@NotNull String[] headers, @NotNull Object[][] datas, @NotNull String sheetName,
+            @NotNull Path path) throws FileNotFoundException, IOException {
         SXSSFWorkbook workbook = create(headers, datas, sheetName);
 
         workbook.write(new FileOutputStream(path.normalize().toString()));
@@ -94,11 +93,11 @@ public class ExcelUtils {
      *            저장할 위치
      * @throws FileNotFoundException
      * @throws IOException
-     * 
      * @author MJ Youn
      * @since 2024. 02. 07.
      */
-    public static void create(@NotNull String[] headers, @NotNull Object[][] datas, @NotNull Path path) throws FileNotFoundException, IOException {
+    public static void create(@NotNull String[] headers, @NotNull Object[][] datas, @NotNull Path path)
+            throws FileNotFoundException, IOException {
         SXSSFWorkbook workbook = create(headers, datas);
 
         workbook.write(new FileOutputStream(path.normalize().toString()));
@@ -114,7 +113,6 @@ public class ExcelUtils {
      * @param clazz
      *            클래스 정보
      * @return {@link SXSSFWorkbook}
-     * 
      * @author MJ Youn
      * @since 2024. 02. 07.
      */
@@ -159,8 +157,8 @@ public class ExcelUtils {
                 Field _field = fields[fieldIndex];
                 ExcelColumn excelInfo = _field.getAnnotation(ExcelColumn.class);
 
-                if (excelInfo == null || (excelInfo != null && !excelInfo.ignore())) {
-                    boolean accessible = _field.isAccessible();
+                if (excelInfo == null || !excelInfo.ignore()) {
+                    boolean accessible = _field.canAccess(content);
                     _field.setAccessible(true);
 
                     try {
@@ -201,7 +199,6 @@ public class ExcelUtils {
      * @param datas
      *            데이터 정보
      * @return 엑셀 객체
-     * 
      * @author MJ Youn
      * @since 2024. 02. 07.
      */
@@ -219,11 +216,11 @@ public class ExcelUtils {
      * @param sheetName
      *            시트 이름
      * @return 액셀 객체
-     * 
      * @author MJ Youn
      * @since 2024. 02. 07.
      */
-    public static SXSSFWorkbook create(@NotNull String[] headers, @NotNull Object[][] datas, @NotNull String sheetName) {
+    public static SXSSFWorkbook create(@NotNull String[] headers, @NotNull Object[][] datas,
+            @NotNull String sheetName) {
         // excel 파일 생성
         SXSSFWorkbook workbook = new SXSSFWorkbook();
         // new sheet
